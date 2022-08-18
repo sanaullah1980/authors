@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import { Button, TextField, Typography } from '@mui/material';
+import { Link, Route, Routes } from 'react-router-dom';
+import AuthorList from './components/AuthorList';
+import EditAuthor from './components/EditAuthor';
+import AddNewAuthor from './components/AddNewAuthor';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='header'>
+        <Typography
+            sx={{margin:"1rem"}} 
+            variant="h4" >
+          Favorite Authors
+        </Typography>
+        <Link to={'/new'}> Add New Author </Link>
+      </div>
+      
+      
+
+      <Routes>
+        <Route path='/' element={<AuthorList />} />
+        <Route path='/new' element={<AddNewAuthor />} />
+        <Route path='/author/:id' element={<EditAuthor />} />
+      </Routes>
+      
     </div>
   );
 }

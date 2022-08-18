@@ -4,6 +4,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import AuthorList from './components/AuthorList';
 import EditAuthor from './components/EditAuthor';
 import AddNewAuthor from './components/AddNewAuthor';
+import ErrorPage from './components/ErrorPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path='/' element={<AuthorList />} />
         <Route path='/new' element={<AddNewAuthor />} />
+        <Route path='/errorPage' element={<ErrorPage />} />
         <Route path='/author/:id' element={<EditAuthor />} />
       </Routes>
       

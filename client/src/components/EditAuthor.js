@@ -30,9 +30,13 @@ const EditAuthor = () => {
             try {
                 const res = await axios.get(`http://localhost:5000/api/author/${id}`);
                 const resData = await res.data;
-                setName(resData.data.name);
+                if(resData && resData.data && resData.data.name){
+                    setName(resData.data.name);
+                }
+               
             } catch (error) {
                console.log(error); 
+               navigate('/errorPage');
             }
         }
         getAuthorById();

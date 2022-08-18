@@ -18,7 +18,7 @@ const AuthorList = () => {
         const deleteItem = async () => {
             try {
                 await axios.delete(`http://localhost:5000/api/author/${id}`)   
-                filterAuthor(id);
+                removeAuthor(id);
             } catch (error) {
                 console.log(error);
             }
@@ -26,7 +26,7 @@ const AuthorList = () => {
         deleteItem();
     }
 
-    const filterAuthor= (id) => {
+    const removeAuthor= (id) => {
         const newAuthorList = authors.filter((author)=> {
             return author._id !== id
         })
@@ -73,6 +73,11 @@ const AuthorList = () => {
         marginLeft: '1rem'
     }
 
+    const sortAuthor = () =>{
+        const sortedAuthorsList = authors.sort((a, b) => a.name.localeCompare(b.name))
+        setAuthors(sortedAuthorsList); 
+    }
+
     useEffect(() => {
         const getAuthors = async () =>{
             try {
@@ -85,6 +90,7 @@ const AuthorList = () => {
         }
 
         getAuthors();
+        sortAuthor()
     }, []);
 
   return (
